@@ -14,14 +14,11 @@
 <div infinite-scroll infiniteScrollDistance="2" infiniteScrollThrottle="300" (scrolled)="onScrolled()">
   <mat-grid-list cols="4" rowHeight="2:1">
     <mat-grid-tile *ngFor="let item of apiRes; let i = index">
-      <button mat-button (click)="openDialog(i)">
+<!--      <button mat-button (click)="openDialog(i)">-->
         <img [src]="item" alt="">
-      </button>
+<!--      </button>-->
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-
-
-
 
 
