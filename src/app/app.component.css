@@ -1,0 +1,14 @@
+.headerSearch {
+  margin: 2%;
+  border-bottom: 3px solid #670591;
+}
+
+.example-viewport {
+  height: auto;
+  width: 100%;
+}
+
+.example-item {
+  height: 100px;
+  width: 100px;
+}
