@@ -1,7 +1,10 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit, Inject} from '@angular/core';
 import Unsplash, { toJson } from 'unsplash-js';
-import {DialogComponent} from './dialog/dialog.component';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+export interface DialogData {
+  image: string;
+}
 
 @Injectable()
 
@@ -14,13 +17,11 @@ export class AppComponent implements OnInit {
   public title = 'unsplash-angular';
   public searchVal = '';
   public apiRes: string[] = [];
-  public dialogWindow = false;
-  public expDialog: number = null;
-  public unsplash = new Unsplash({ accessKey: 'RGOIhPIiVGlcm8pg_u1cUrmwwmzLB1mkr1tVq4GvJbE' });
+  public unsplash = new Unsplash({ accessKey: 'kJR5wXodQmdEbVu9TmGa7elB0JmwH9-y4o6VOH4_uXA' });
+  public a = this.onScrolled();
 
   ngOnInit(): void {
     this.onScrolled();
-    console.log(this.expDialog);
   }
 
   onScrolled(): void {
@@ -58,8 +59,18 @@ export class AppComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   openDialog(i): void {
-    // console.log(i);
-    this.expDialog = i;
-    this.dialog.open(DialogComponent);
+    this.dialog.open(DialogComponent, {
+      data: {
+        image: this.apiRes[i]
+      }
+    });
   }
+}
+
+@Component({
+  selector: 'app-dialog',
+  templateUrl: 'dialog.component.html',
+})
+export class DialogComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 }

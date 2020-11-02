@@ -7,10 +7,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
-import { AppComponent } from './app.component';
+import {AppComponent, DialogComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogComponent } from './dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 
 
@@ -29,7 +28,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDialogModule,
     InfiniteScrollModule,
   ],
-  providers: [AppComponent, DialogComponent],
+  providers: [AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
